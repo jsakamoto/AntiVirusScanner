@@ -6,6 +6,87 @@ This library allows you to virus-scanning a file by any .NET languages (C#, F#, 
 
  このライブラリは任意の.NET言語 (C#, F#, VB), PowerShell, F# Script, 及び WSH (JScript, VBScript) 等の任意の COM IDispatch クライアントから、ファイルのウィルススキャンを可能にします。
 
+## Quick Start / クイックスタート
+
+### C#
+
+1. Download and add reference of this library to your C# project from "NuGet",
+
+- https://www.nuget.org/packages/AntiVirusScanner/
+
+form Package Manager Console,
+```
+PM> Install-Package AntiVirusScanner
+```
+
+or dotnet CLI.
+
+```
+> dotnet add package AntiVirusScanner
+```
+
+2. After installed this library, you can scan a file like this C# code:
+
+```csharp
+var scanner = new AntiVirus.Scanner();
+var result = scanner.ScanAndClean(@"c:\some\file\path.txt");
+Console.WriteLine(result); // console output is "VirusNotFound".
+```
+
+### PowerShell
+
+1. Donwload `AntiVirusScanner.dll` from [download page](https://github.com/jsakamoto/AntiVirusScanner/releases).
+
+2. Enter commands in PowerShell console, like this:
+
+```powershell
+PS> [Reflection.Assembly]::LoadFrom("c:\some\folder\AntiVirusScanner.dll")
+PS> $scanner = New-Object AntiVirus.Scanner
+PS> $scanner.ScanAndClean("c:\some\file\path.txt")
+VirusNotFound
+```
+
+### F# Script
+
+1. Donwload `AntiVirusScanner.dll` from [download page](https://github.com/jsakamoto/AntiVirusScanner/releases).
+2. Write F# Script code like this, and run it.
+
+```fsharp
+// sample.fsx
+#I "c:\some\folder"
+#r "AntiVirusScanner.dll"
+let scanner = new AntiVirus.Scanner()
+scanner.ScanAndClean(@"c:\some\file\path.txt")
+    |> printfn "%O" // console output is "VirusNotFound".
+```
+
+### VBScript
+
+1. Donwload `AntiVirusScanner.dll` from [download page](https://github.com/jsakamoto/AntiVirusScanner/releases), and run `Install as a COM server.bat` as adminstrator.
+
+2. Write VBScript code like this, and run it.
+
+```vb
+rem sample.vbs
+Set scanner = CreateObject("AntiVirus.Scanner")
+Set result = scanner.ScanAndClean("c:\some\file\path.txt")
+WScript.Echo result 
+' console output is  0, means "VirusNotFound". 1 is "VirusFound" (may be cleaned), 2 is "FileNotExist".
+```
+
+## System Requirements / システム要件
+
+- Windows OS (7 ~)
+- .NET Framework (3.5 Client Profile ~) - or - .NET Core (2.0 ~)
+- Any anti virus application which supported IAttachmentExecute API. / IAttachmentExecute API に対応したウィルス対策ソフトウェア
+
+### Known list / 既知のリスト
+
+- "Microsoft Security Essentials" on Win7Pro (x64)
+- "ESET NOD32 AntiVirus 4.0" on Win7Pro (x86)
+- "Windows Defender" on Win10Pro (x64)
+
+
 ## Who virus-scan a file? / 誰がウィルススキャンを行うのか?
 
 This library is a wrapper of anti virus software product (such as "Microsoft Security Essentials") which you installed on your Windows OS.  
@@ -25,59 +106,6 @@ Windows OS は、インストールされているウィルス対策ソフトウ
 しかしこの API は COM インターフェースとしてのみ公開されており、COM の IDispatch インターフェースにすら対応していません。  
 そのため、各種 .NET 言語やスクリプト言語から呼び出すのが極めて困難です。  
 そこで、.NET のアセンブリとして、この API のラッパーを作ることで、各種 .NET 言語やスクリプト言語からこの API を容易に利用可能にしました。
-
-## Quick Start / クイックスタート
-
-C#
-
-```csharp
-// You can download and add reference your VS project from "NuGet"!
-// https://www.nuget.org/packages/AntiVirusScanner/
-var scanner = new AntiVirus.Scanner();
-var result = scanner.ScanAndClean(@"c:\some\file\path.txt");
-Console.WriteLine(result); // console output is "VirusNotFound".
-```
-
-Windows PowerShell
-
-```powershell
-PS> [Reflection.Assembly]::LoadFrom("c:\some\folder\AntiVirusScanner.dll")
-PS> $scanner = New-Object AntiVirus.Scanner
-PS> $scanner.ScanAndClean("c:\some\file\path.txt")
-VirusNotFound
-```
-
-F# Script
-
-```fsharp
-#I "c:\some\folder"
-#r "AntiVirusScanner.dll"
-let scanner = new AntiVirus.Scanner()
-scanner.ScanAndClean(@"c:\some\file\path.txt")
-    |> printfn "%O" // console output is "VirusNotFound".
-```
-
-VBScript
-
-```vb
-Set scanner = CreateObject("AntiVirus.Scanner")
-Set result = scanner.ScanAndClean("c:\some\file\path.txt")
-WScript.Echo result 
-' console output is  0, means "VirusNotFound". 1 is "VirusFound" (may be cleaned), 2 is "FileNotExist".
-```
-
-## System Requirements / システム要件
-
-- Windows OS (7 ~)
-- .NET Framework (3.5 Client Profile ~) - or - .NET Core (2.0 ~)
-- Any anti virus application which supported IAttachmentExecute API. / IAttachmentExecute API に対応したウィルス対策ソフトウェア
-
-### Known list / 既知のリスト
-
-- "Microsoft Security Essentials" on Win7Pro (x64)
-- "ESET NOD32 AntiVirus 4.0" on Win7Pro (x86)
-- "Windows Defender" on Win10Pro (x64)
-
 
 ## License
 
