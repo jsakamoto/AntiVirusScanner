@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiVirusScanner", "AntiVirusScanner\AntiVirusScanner.csproj", "{F9659E60-7B1F-452D-9B2C-D70D6007F3B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntiVirusScanner", "AntiVirusScanner\AntiVirusScanner.csproj", "{F9659E60-7B1F-452D-9B2C-D70D6007F3B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{278A780E-2CCA-4A34-8F21-6168BA50B77F}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{278A78
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "SampleConsoleApp\SampleConsoleApp.csproj", "{B7504168-A51C-4DD3-95CA-541131D86A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleNetCoreConsoleApp", "SampleNetCoreConsoleApp\SampleNetCoreConsoleApp.csproj", "{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleApps", "SampleApps", "{B1FC632E-6395-455E-9730-A301E42EDB37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,25 @@ Global
 		{B7504168-A51C-4DD3-95CA-541131D86A27}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B7504168-A51C-4DD3-95CA-541131D86A27}.Release|x86.ActiveCfg = Release|Any CPU
 		{B7504168-A51C-4DD3-95CA-541131D86A27}.Release|x86.Build.0 = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Debug|x86.Build.0 = Debug|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|x86.ActiveCfg = Release|Any CPU
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7504168-A51C-4DD3-95CA-541131D86A27} = {B1FC632E-6395-455E-9730-A301E42EDB37}
+		{B16B5C9F-961C-480A-85F9-9EE57FF61BC6} = {B1FC632E-6395-455E-9730-A301E42EDB37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83707CC8-C6A6-4738-BAD4-B75275F843C0}

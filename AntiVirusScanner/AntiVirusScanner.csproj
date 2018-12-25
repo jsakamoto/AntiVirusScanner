@@ -1,66 +1,60 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F9659E60-7B1F-452D-9B2C-D70D6007F3B7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>netstandard2.0;net35</TargetFrameworks>
     <RootNamespace>AntiVirus</RootNamespace>
-    <AssemblyName>AntiVirusScanner</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <DocumentationFile>bin\Release\AntiVirusScanner.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
+    <Copyright>Copyright (C) J.Sakamoto 2011-2018 - Mozilla Public License (MPL) Version 2.0</Copyright>
+    <Version>1.0.1</Version>
+    <PackageLicenseUrl>https://github.com/jsakamoto/AntiVirusScanner/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jsakamoto/AntiVirusScanner/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jsakamoto/AntiVirusScanner/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>AntiVirus,virus,malware,malwarescanner</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <Description>This library allows you to virus-scanning a file by the anti virus application which you installed.
+インストールされているウィルス対策ソフトウェアによる、ファイルのウィルススキャンを行うことができる、.NET 言語用のクラスライブラリです。
+</Description>
+    <Authors>J.Sakamoto</Authors>
+    <PackageReleaseNotes>v.1.0.1
+- Add .NET Core support.
+v.1.0.0
+- 1st release.</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>AntiVirusScanner.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|netstandard2.0'">
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|netstandard2.0'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net40'">
+    <DefineConstants>TRACE;RELEASE;</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net40'">
+    <DefineConstants>TRACE;DEBUG;</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <None Update="Install as a COM server.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AntiVirus.Scanner.cs" />
-    <Compile Include="COMInterop\AttachmentServices.cs" />
-    <Compile Include="COMInterop\HResult.cs" />
-    <Compile Include="COMInterop\IAttachmentExecute.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+  <!--
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.4" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="AntiVirusScanner.snk" />
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="3.0.20105.1" />
+    <Reference Include="System.Web" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Install as a COM server.bat" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+-->
 </Project>

@@ -68,10 +68,15 @@ WScript.Echo result
 
 ## System Requirements / システム要件
 
-- .NET Framework 3.5 Client Profile
+- Windows OS (7 ~)
+- .NET Framework (3.5 Client Profile ~) - or - .NET Core (2.0 ~)
 - Any anti virus application which supported IAttachmentExecute API. / IAttachmentExecute API に対応したウィルス対策ソフトウェア
 
-(I know this library works with "Microsoft Security Essentials" on Win7Pro(x64), "ESET NOD32 AntiVirus 4.0" on Win7Pro(x86).)
+### Known list / 既知のリスト
+
+- "Microsoft Security Essentials" on Win7Pro (x64)
+- "ESET NOD32 AntiVirus 4.0" on Win7Pro (x86)
+- "Windows Defender" on Win10Pro (x64)
 
 
 ## License
