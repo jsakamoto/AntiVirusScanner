@@ -2,7 +2,7 @@
 
 ## Project Description / 概要
 
-This library allows you to virus-scanning a file by any .NET languages (C#, F#, VB...), PowerShell, F# Script, WSH (JScript, VBScript), and any COM IDispatch client.
+This library allows you to scan files for viruses by any .NET languages (C#, F#, VB...), PowerShell, F# Script, WSH (JScript, VBScript), and any COM IDispatch client.
 
  このライブラリは任意の.NET言語 (C#, F#, VB), PowerShell, F# Script, 及び WSH (JScript, VBScript) 等の任意の COM IDispatch クライアントから、ファイルのウィルススキャンを可能にします。
 
@@ -14,14 +14,14 @@ This library allows you to virus-scanning a file by any .NET languages (C#, F#, 
 
 - https://www.nuget.org/packages/AntiVirusScanner/
 
-form Package Manager Console,
+From Package Manager Console,
 ```
 PM> Install-Package AntiVirusScanner
 ```
 
 or dotnet CLI.
 
-```
+```sh
 > dotnet add package AntiVirusScanner
 ```
 
@@ -90,7 +90,7 @@ WScript.Echo result
 ## Who virus-scan a file? / 誰がウィルススキャンを行うのか?
 
 This library is a wrapper of anti virus software product (such as "Microsoft Security Essentials") which you installed on your Windows OS.  
-Therefore, this library does not work if you do not install any anti virus software produsts on your Windows OS.
+Therefore, this library does not work if you do not install any anti virus software products on your Windows OS.
 
 このライブラリは、あなたの Windows OS にあなたがインストールしたウィルス対策ソフトウェア（"Microsoft Security Essentials" のような）のラッパーに過ぎません。  
 実際にウィルススキャンを行うのは、そのウィルス対策ソフトウェア製品です。  
