@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net35</TargetFrameworks>
     <RootNamespace>AntiVirus</RootNamespace>
-    <Copyright>Copyright (C) J.Sakamoto 2011-2018 - Mozilla Public License (MPL) Version 2.0</Copyright>
-    <Version>1.0.1</Version>
-    <PackageLicenseUrl>https://github.com/jsakamoto/AntiVirusScanner/blob/master/LICENSE</PackageLicenseUrl>
+    <Version>1.0.2</Version>
+    <Copyright>Copyright (C) J.Sakamoto 2011-2022 - Mozilla Public License (MPL) Version 2.0</Copyright>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jsakamoto/AntiVirusScanner/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jsakamoto/AntiVirusScanner/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -13,18 +13,21 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <NoWarn>$(NoWarn);1591</NoWarn>
-    <Description>This library allows you to virus-scanning a file by the anti virus application which you installed.
-インストールされているウィルス対策ソフトウェアによる、ファイルのウィルススキャンを行うことができる、.NET 言語用のクラスライブラリです。
-</Description>
+    <Description>This library allows you to virus-scanning a file by the anti virus application which you installed.</Description>
     <Authors>J.Sakamoto</Authors>
-    <PackageReleaseNotes>v.1.0.1
-- Add .NET Core support.
-v.1.0.0
-- 1st release.</PackageReleaseNotes>
+    <PackageReleaseNotes>(Please write the package release notes in "../RELEASE-NOTES.txt")</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>AntiVirusScanner.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>nupkg-icon.png</PackageIcon>
+    <PackageOutputPath>../_dist</PackageOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Visible="false" Pack="true" PackagePath="/" />
+    <None Include="..\.assets\nupkg-icon.png" Visible="false" Pack="true" PackagePath="/" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|netstandard2.0'">
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
@@ -47,14 +50,15 @@ v.1.0.0
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <!--
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.4" />
-  </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="3.0.20105.1" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
--->
+  <Target Name="BuildPackageReleaseNotes" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="../RELEASE-NOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>
+      <PackageReleaseNotes>$([System.Text.RegularExpressions.Regex]::Match($(PackageReleaseNotes), "^(v\.[\d\.]+.+?)v\.[\d\.]+", System.Text.RegularExpressions.RegexOptions.Singleline).Groups[1].Value)</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
+
 </Project>

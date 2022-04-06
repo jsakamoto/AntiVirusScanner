@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntiVirusScanner", "AntiVirusScanner\AntiVirusScanner.csproj", "{F9659E60-7B1F-452D-9B2C-D70D6007F3B7}"
 EndProject
@@ -9,11 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{278A78
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
+		RELEASE-NOTES.txt = RELEASE-NOTES.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "SampleConsoleApp\SampleConsoleApp.csproj", "{B7504168-A51C-4DD3-95CA-541131D86A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleNetCoreConsoleApp", "SampleNetCoreConsoleApp\SampleNetCoreConsoleApp.csproj", "{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleNetCoreConsoleApp", "SampleNetCoreConsoleApp\SampleNetCoreConsoleApp.csproj", "{B16B5C9F-961C-480A-85F9-9EE57FF61BC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleApps", "SampleApps", "{B1FC632E-6395-455E-9730-A301E42EDB37}"
 EndProject
